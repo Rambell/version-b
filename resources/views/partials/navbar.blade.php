@@ -49,4 +49,35 @@
             <span class="navbar__blacksale-text">Black Sale Oficial</span>
         </a>
     </div>
+
+    {{-- Menú mobile --}}
+    <div class="navbar__mobile" id="mobile-menu" style="display:none">
+        <a href="#" class="navbar__mobile-link">Descubre ADIPA</a>
+        <a href="#" class="navbar__mobile-link">Recursos</a>
+        <a href="#" class="navbar__mobile-link">
+            <span class="navbar__badge navbar__badge--gratis">GRATIS</span> Seminarios
+        </a>
+        <a href="#" class="navbar__mobile-link">
+            <span class="navbar__badge navbar__badge--nuevo">NUEVO</span> Congreso
+        </a>
+        <a href="#" class="navbar__mobile-link">Especializaciones</a>
+        <a href="#" class="navbar__mobile-link">Acreditaciones</a>
+        <a href="#" class="navbar__mobile-link">Sesiones Magistrales</a>
+        <a href="#" class="navbar__mobile-link">Diplomados</a>
+        <a href="#" class="navbar__mobile-link navbar__mobile-link--bold">Cursos</a>
+
+     <div class="navbar__mobile-divider"></div>
+
+        {{-- Black Sale --}}
+        <a href="#" class="navbar__mobile-link navbar__mobile-link--blacksale">Black Sale Oficial</a>
+
+        <div class="navbar__mobile-divider"></div>
+
+        {{-- Botones de sesión --}}
+        <div class="navbar__mobile-actions">
+            <a href="#" class="navbar__mobile-btn navbar__mobile-btn--primary">Iniciar Sesión</a>
+            <a href="#" class="navbar__mobile-btn navbar__mobile-btn--secondary">Regístrate</a>
+        </div>
+
+    </div>
 </nav>

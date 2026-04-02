@@ -21,18 +21,35 @@
      data-popularity="{{ $course['popularity'] }}"
      data-rating="{{ $course['rating'] }}">
 
-    <div class="course-card__image-wrapper">
-        <img src="{{ $course['image'] }}" alt="{{ $course['title'] }}" class="course-card__image">
+<div class="course-card__image-wrapper">
+    <img src="{{ $course['image'] }}" alt="{{ $course['title'] }}" class="course-card__image" loading="lazy">
 
+    {{-- Badge modalidad + tooltip --}}
+    <div class="course-card__badge-wrapper">
         <div class="course-card__badge-modalidad">
             <span class="course-card__dot" style="background: {{ $dotColor }}"></span>
             {{ $course['modalidad'] }}
+            <span class="course-card__badge-info">ℹ</span>
         </div>
 
-        <div class="course-card__rating">
-            ★ 5.0
+        {{-- Tooltip --}}
+        @php
+            $tooltips = [
+                'En Vivo' => 'Sesiones en tiempo real con el instructor. Se graban para verlas después.',
+                'Online' => 'Accede cuando quieras, a tu propio ritmo.',
+                'Presencial' => 'Asistencia física requerida en sede.',
+            ];
+        @endphp
+        <div class="course-card__tooltip">
+            {{ $tooltips[$course['modalidad']] ?? '' }}
+            <div class="course-card__tooltip-arrow"></div>
         </div>
     </div>
+
+    <div class="course-card__rating">
+        ★ {{ $course['rating'] }}
+    </div>
+</div>
 
     <div class="course-card__body">
         <h3 class="course-card__title">{{ $course['title'] }}</h3>

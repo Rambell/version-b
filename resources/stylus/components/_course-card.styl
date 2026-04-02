@@ -2,9 +2,22 @@
     &__container
         max-width 1440px
         margin 0 auto
-        padding 40px
         display flex
         gap 40px
+        // 375px: Columna y menos padding
+        flex-direction column
+        padding 20px 15px
+
+        // 768px: Mantiene columna pero más aire
+        @media (min-width: 768px)
+            padding 30px
+            gap 30px
+
+        // 1280px+: Sidebar al lado del contenido
+        @media (min-width: 1280px)
+            flex-direction row
+            padding 40px
+            gap 40px
 
     &__main
         flex 1
@@ -17,10 +30,20 @@
     display block
     border-radius 16px
     overflow hidden
+    margin-bottom 10px
 
     &__img
         width 100%
         object-fit cover
+        display block
+        // 375px: Altura fija para que no sea gigante
+        height 120px
+        
+        @media (min-width: 768px)
+            height 180px
+            
+        @media (min-width: 1280px)
+            height auto
 
 .filter-chips
     display flex
@@ -50,11 +73,34 @@
         padding 0
 
 .course-grid
+    display grid
+    gap 20px
+    min-height 400px
+    
+    // 375px: Una sola columna
+    grid-template-columns 1fr
+
+    // 768px: Dos columnas
+    @media (min-width: 768px)
+        grid-template-columns repeat(2, 1fr)
+
+    // 1280px+: Tres columnas
+    @media (min-width: 1280px)
+        grid-template-columns repeat(3, 1fr)
+
     &__header
         display flex
-        align-items center
-        justify-content space-between
+        // 375px: Apilado
+        flex-direction column
+        align-items flex-start
+        gap 12px
         margin-bottom 8px
+
+        // 768px+: Lado a lado
+        @media (min-width: 768px)
+            flex-direction row
+            align-items center
+            justify-content space-between
 
     &__title
         color var(--color-primary)
@@ -100,27 +146,16 @@
     &__empty-icon
         font-size 40px
 
-.course-grid
-    display grid
-    grid-template-columns repeat(3, 1fr)
-    gap 20px
-    min-height 400px
-
-    @media (max-width: 1024px)
-        grid-template-columns repeat(2, 1fr)
-
-    @media (max-width: 640px)
-        grid-template-columns 1fr
-
 .course-card
     background var(--color-bg)
     border-radius 12px
-    overflow hidden
     border 1px solid var(--color-border)
     box-shadow 0 1px 3px rgba(0,0,0,0.06)
     display flex
     flex-direction column
     transition all 0.3s ease
+    position relative
+    overflow visible
 
     &:hover
         box-shadow 0 8px 24px rgba(0,0,0,0.12)
@@ -131,7 +166,9 @@
         position relative
         width 100%
         height 180px
-        overflow hidden
+        overflow visible 
+        clip-path inset(0% 0% 0% 0% round 12px 12px 0 0)
+        z-index 1
 
     &__image
         width 100%
@@ -142,25 +179,76 @@
     &:hover &__image
         transform scale(1.05)
 
-    &__badge-modalidad
+    &__badge-wrapper
         position absolute
         bottom 10px
         right 10px
-        background rgba(30,30,30,0.7)
+        z-index 30
+
+        &:hover .course-card__tooltip
+            visibility visible
+            opacity 1
+            transform translateY(0)
+
+    &__badge-modalidad
+        display flex
+        align-items center
+        gap 6px
+        background rgba(30,30,30,0.8)
         color #fff
         font-size 11px
         font-weight 500
         padding 4px 10px
         border-radius 999px
-        display flex
-        align-items center
-        gap 6px
+        cursor help
 
     &__dot
         width 6px
         height 6px
         border-radius 50%
         display inline-block
+
+    &__badge-info
+        color rgba(255,255,255,0.6)
+        font-size 10px
+
+    &__tooltip
+        position absolute
+        bottom 100%
+        right 0
+        margin-bottom 12px
+        width 180px
+        background #ffffff
+        color #4a4a4a
+        padding 8px 10px
+        border-radius 8px
+        box-shadow 0 10px 25px rgba(0,0,0,0.2)
+        border 1px solid #eee
+        visibility hidden
+        opacity 0
+        transform translateY(10px)
+        transition all 0.2s ease
+        pointer-events none
+        z-index 100
+        font-size 11px
+        font-weight 400
+        line-height 1.3
+
+        // 375px: Ajuste para que no se salga de la pantalla
+        @media (max-width: 400px)
+            width 150px
+            right -5px
+
+    &__tooltip-arrow
+        position absolute
+        bottom -6px
+        right 15px
+        width 10px
+        height 10px
+        background #fff
+        border-right 1px solid #eee
+        border-bottom 1px solid #eee
+        transform rotate(45deg)
 
     &__rating
         position absolute
@@ -171,6 +259,7 @@
         font-size 11px
         padding 4px 10px
         border-radius 999px
+        z-index 10
 
     &__body
         padding 16px
