@@ -6,11 +6,20 @@
         'Online' => '#60a5fa',
         default => '#f97316'
     };
+    $tagsStr = implode(',', $course['tags'] ?? []);
 @endphp
 
 <div class="course-card"
      data-category="{{ $course['categoria'] }}"
-     data-modalidad="{{ $course['modalidad'] }}">
+     data-modalidad="{{ $course['modalidad'] }}"
+     data-tipo="{{ $course['tipo'] }}"
+     data-tags="{{ $tagsStr }}"
+     data-price="{{ $course['discountPrice'] }}"
+     data-horas="{{ $course['horas'] }}"
+     data-discount="{{ $discount }}"
+     data-status="{{ $course['status'] }}"
+     data-popularity="{{ $course['popularity'] }}"
+     data-rating="{{ $course['rating'] }}">
 
     <div class="course-card__image-wrapper">
         <img src="{{ $course['image'] }}" alt="{{ $course['title'] }}" class="course-card__image">

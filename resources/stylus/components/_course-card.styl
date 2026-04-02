@@ -32,8 +32,8 @@
     display flex
     align-items center
     gap 6px
-    background #f0ebff
-    color $color-primary
+    background var(--color-bg-soft)
+    color var(--color-primary)
     font-size 12px
     font-weight 500
     padding 6px 12px
@@ -43,7 +43,7 @@
     &__remove
         background none
         border none
-        color $color-primary
+        color var(--color-primary)
         cursor pointer
         font-size 14px
         line-height 1
@@ -57,7 +57,7 @@
         margin-bottom 8px
 
     &__title
-        color $color-primary
+        color var(--color-primary)
         font-weight 600
         font-size 15px
 
@@ -68,26 +68,28 @@
 
     &__sort-label
         font-size 12px
-        color #a0aec0
+        color var(--color-text-light)
         text-transform uppercase
         font-weight 600
 
     &__sort-select
-        border 1px solid #e2e8f0
+        border 1px solid var(--color-border)
         border-radius 8px
         font-size 13px
         padding 6px 12px
         outline none
         font-family 'Poppins', sans-serif
         cursor pointer
+        background var(--color-bg)
+        color var(--color-text)
 
         &:hover
-            border-color $color-primary
+            border-color var(--color-primary)
 
     &__empty
         text-align center
         padding 60px 0
-        color #a0aec0
+        color var(--color-text-light)
         min-height 400px
         display flex
         flex-direction column
@@ -111,10 +113,10 @@
         grid-template-columns 1fr
 
 .course-card
-    background #fff
+    background var(--color-bg)
     border-radius 12px
     overflow hidden
-    border 1px solid #f0f0f0
+    border 1px solid var(--color-border)
     box-shadow 0 1px 3px rgba(0,0,0,0.06)
     display flex
     flex-direction column
@@ -180,7 +182,7 @@
     &__title
         font-size 14px
         font-weight 600
-        color $color-text
+        color var(--color-text)
         line-height 1.4
         display -webkit-box
         -webkit-line-clamp 3
@@ -192,14 +194,14 @@
         align-items center
         gap 6px
         font-size 12px
-        color $color-text-light
+        color var(--color-text-light)
 
     &__meta
         display flex
         align-items center
         justify-content space-between
         font-size 12px
-        color $color-text-light
+        color var(--color-text-light)
 
     &__status
         color #16a34a
@@ -208,7 +210,7 @@
     &__footer
         margin-top auto
         padding-top 12px
-        border-top 1px solid #f0f0f0
+        border-top 1px solid var(--color-border)
         display flex
         align-items center
         justify-content space-between
@@ -222,10 +224,10 @@
     &__price
         font-size 16px
         font-weight 700
-        color $color-text
+        color var(--color-text)
 
     &__discount-badge
-        background $color-accent
+        background var(--color-accent)
         color #fff
         font-size 11px
         font-weight 700
@@ -234,11 +236,11 @@
 
     &__original-price
         font-size 12px
-        color #a0aec0
+        color var(--color-text-light)
         text-decoration line-through
 
     &__btn
-        background $color-primary
+        background var(--color-primary)
         color #fff
         border none
         padding 6px 14px
@@ -250,4 +252,4 @@
         transition background 0.2s
 
         &:hover
-            background darken($color-primary, 10%)
+            background var(--color-primary-dark)
