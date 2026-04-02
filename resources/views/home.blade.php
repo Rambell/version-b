@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'ADIPA - versionB')
+@section('title', 'ADIPA - VersionB')
 
 @section('content')
     @include('sections.hero')
