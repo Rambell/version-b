@@ -1,1 +1,101 @@
-// sidebar
+.sidebar
+    width 220px
+    flex-shrink 0
+
+    &__quick-links
+        list-style none
+        padding 0
+        margin 0 0 24px 0
+        display flex
+        flex-direction column
+        gap 8px
+
+    &__quick-link
+        font-size 14px
+        font-weight 500
+        color $color-text
+        text-decoration none
+        transition color 0.2s
+
+        &:hover
+            color $color-primary
+
+    &__divider
+        border-top 1px solid #e2e8f0
+        margin-bottom 16px
+
+    &__filters-header
+        display flex
+        align-items center
+        justify-content space-between
+        margin-bottom 16px
+
+    &__filters-title
+        font-size 13px
+        font-weight 700
+        color $color-text
+
+    &__clear
+        background none
+        border none
+        font-size 12px
+        color $color-primary
+        cursor pointer
+        font-family 'Poppins', sans-serif
+
+        &:hover
+            text-decoration underline
+
+    &__group
+        margin-bottom 16px
+
+    &__group-header
+        width 100%
+        background none
+        border none
+        display flex
+        align-items center
+        justify-content space-between
+        cursor pointer
+        padding 0
+        margin-bottom 8px
+        font-family 'Poppins', sans-serif
+
+        span
+            font-size 13px
+            font-weight 700
+            color $color-text
+
+            &:hover
+                color $color-primary
+
+    &__chevron
+        transition transform 0.2s
+
+    &__options
+        list-style none
+        padding 0
+        margin 0
+        display flex
+        flex-direction column
+        gap 8px
+
+    &__option
+        display flex
+        align-items flex-start
+        gap 8px
+
+    &__checkbox
+        margin-top 3px
+        accent-color $color-primary
+        cursor pointer
+
+    &__label
+        font-size 13px
+        color $color-text-light
+        cursor pointer
+        line-height 1.4
+        transition color 0.2s
+
+        &:hover
+            color $color-primary

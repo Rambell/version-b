@@ -12,7 +12,8 @@
         padding 0 40px
         display flex
         align-items center
-        justify-content space-between
+        justify-content center
+        position relative
 
     &__announcement-close
         background none
@@ -22,15 +23,20 @@
         font-size 16px
         opacity 0.8
         transition opacity 0.2s
+        position absolute
+        right 40px
 
         &:hover
             opacity 1
 
     &__main
-        background $color-primary
-        background linear-gradient(135deg, $color-primary 0%, #7c3aed 100%)
+        background var(--color-primary)
+        background linear-gradient(135deg, var(--color-primary) 0%, #7c3aed 100%)
         color #fff
         padding 80px 16px
+
+        @media (max-width: 768px)
+            padding 48px 16px
 
     &__content
         max-width 700px
@@ -56,6 +62,9 @@
         color rgba(255,255,255,0.85)
         font-size 16px
         max-width 500px
+
+        @media (max-width: 768px)
+            font-size 14px
 
     &__search
         width 100%

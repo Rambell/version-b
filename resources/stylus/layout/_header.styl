@@ -1,11 +1,9 @@
-
-
 // ==================
 // TOPBAR (BEM)
 // ==================
 .topbar
-    background #fff
-    border-bottom 1px solid #f0f0f0
+    background var(--color-bg)
+
     padding 12px 0
 
     &__container
@@ -24,16 +22,16 @@
     &__search
         display flex
         align-items center
-        border 1px solid $color-border
-        border-radius 8px         
-        overflow hidden           
+        border 1px solid var(--color-border)
+        border-radius 8px
+        overflow hidden
         width 100%
-        max-width 500px           
-        background #fff
+        max-width 500px
+        background var(--color-bg)
         transition border-color 0.3s ease
 
-        &:focus-within           
-            border-color darken($color-border, 20%)
+        &:focus-within
+            border-color var(--color-accent)
 
     &__search-input
         flex 1
@@ -41,18 +39,18 @@
         font-size 14px
         border none
         outline none
-        color #4a4a4a
+        color var(--color-text)
         font-family 'Poppins', sans-serif
         background transparent
 
         &::placeholder
-            color #a0aec0
+            color var(--color-text-light)
 
     &__search-btn
-        background $color-accent
+        background var(--color-accent)
         border none
-        padding 0 20px           
-        height 40px               
+        padding 0 20px
+        height 40px
         color #fff
         cursor pointer
         display flex
@@ -65,7 +63,7 @@
             height 18px
 
         &:hover
-            background darken($color-accent, 10%)
+            background var(--color-accent-dark)
 
     &__actions
         display flex
@@ -79,17 +77,20 @@
         font-weight 600
         cursor pointer
         font-family 'Poppins', sans-serif
-        color $color-text
+        color var(--color-text)
 
         &:hover
-            color $color-primary
+            color var(--color-primary)
+        
+        &--login
+            font-weight 900
 
 // ==================
 // NAVBAR (BEM)
 // ==================
 .navbar
-    background #fff
-    border-bottom 1px solid #f0f0f0
+    background var(--color-bg)
+    border-bottom 1px solid var(--color-border)
     position sticky
     top 0
     z-index 100
@@ -118,7 +119,7 @@
         width 18px
 
     &__separator
-        color #ddd
+        color var(--color-border)
         font-weight 300
 
     &__links
@@ -137,8 +138,8 @@
         position relative
 
         &:hover > .navbar__link
-            color $color-accent
-            border-bottom-color $color-accent
+            color var(--color-accent)
+            border-bottom-color var(--color-accent)
 
     &__link
         display flex
@@ -146,7 +147,7 @@
         gap 4px
         font-size 13px
         font-weight 500
-        color $color-text
+        color var(--color-text)
         text-decoration none
         height 100%
         border-bottom 2px solid transparent
@@ -174,7 +175,7 @@
         text-transform uppercase
 
         &--gratis
-            background $color-primary
+            background var(--color-primary)
 
         &--nuevo
             background #ff006e
@@ -182,7 +183,7 @@
     &__blacksale
         display flex
         align-items center
-        background $color-accent
+        background var(--color-accent)
         color #fff
         text-decoration none
         height 45px
@@ -193,7 +194,7 @@
         transition background 0.2s
 
         &:hover
-            background darken($color-accent, 10%)
+            background var(--color-accent-dark)
 
     &__blacksale-icon
         width 28px
@@ -209,3 +210,32 @@
         font-size 12px
         font-weight 600
         white-space nowrap
+
+// ==================
+// DARK MODE TOGGLE
+// ==================
+.dark-toggle
+    background none
+    border 1.5px solid var(--color-border)
+    border-radius 999px
+    padding 5px 10px
+    cursor pointer
+    font-size 13px
+    transition all 0.2s
+    display flex
+    align-items center
+
+    &:hover
+        border-color var(--color-primary)
+
+    &__sun
+        display block
+
+    &__moon
+        display none
+
+.dark .dark-toggle__sun
+    display none
+
+.dark .dark-toggle__moon
+    display block
