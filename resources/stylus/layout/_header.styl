@@ -1,0 +1,211 @@
+
+
+// ==================
+// TOPBAR (BEM)
+// ==================
+.topbar
+    background #fff
+    border-bottom 1px solid #f0f0f0
+    padding 12px 0
+
+    &__container
+        max-width 1440px
+        margin 0 auto
+        padding 0 40px
+        display flex
+        align-items center
+        justify-content space-between
+        gap 20px
+
+    &__logo-img
+        width 180px
+        object-fit contain
+
+    &__search
+        display flex
+        align-items center
+        border 1px solid $color-border
+        border-radius 8px         
+        overflow hidden           
+        width 100%
+        max-width 500px           
+        background #fff
+        transition border-color 0.3s ease
+
+        &:focus-within           
+            border-color darken($color-border, 20%)
+
+    &__search-input
+        flex 1
+        padding 10px 15px
+        font-size 14px
+        border none
+        outline none
+        color #4a4a4a
+        font-family 'Poppins', sans-serif
+        background transparent
+
+        &::placeholder
+            color #a0aec0
+
+    &__search-btn
+        background $color-accent
+        border none
+        padding 0 20px           
+        height 40px               
+        color #fff
+        cursor pointer
+        display flex
+        align-items center
+        justify-content center
+        transition background 0.2s ease
+
+        svg
+            width 18px
+            height 18px
+
+        &:hover
+            background darken($color-accent, 10%)
+
+    &__actions
+        display flex
+        align-items center
+        gap 16px
+
+    &__btn
+        background none
+        border none
+        font-size 13px
+        font-weight 600
+        cursor pointer
+        font-family 'Poppins', sans-serif
+        color $color-text
+
+        &:hover
+            color $color-primary
+
+// ==================
+// NAVBAR (BEM)
+// ==================
+.navbar
+    background #fff
+    border-bottom 1px solid #f0f0f0
+    position sticky
+    top 0
+    z-index 100
+
+    &__container
+        max-width 1440px
+        margin 0 auto
+        padding 0 40px
+        display flex
+        align-items center
+        justify-content space-between
+        height 56px
+
+    &__left
+        display flex
+        align-items center
+        height 100%
+
+    &__whatsapp
+        display flex
+        align-items center
+        gap 12px
+        margin-right 24px
+
+    &__whatsapp-icon
+        width 18px
+
+    &__separator
+        color #ddd
+        font-weight 300
+
+    &__links
+        display flex
+        align-items center
+        height 100%
+        list-style none
+        margin 0
+        padding 0
+        gap 28px
+
+    &__item
+        height 100%
+        display flex
+        align-items center
+        position relative
+
+        &:hover > .navbar__link
+            color $color-accent
+            border-bottom-color $color-accent
+
+    &__link
+        display flex
+        align-items center
+        gap 4px
+        font-size 13px
+        font-weight 500
+        color $color-text
+        text-decoration none
+        height 100%
+        border-bottom 2px solid transparent
+        padding-top 4px
+        white-space nowrap
+        transition color 0.2s, border-color 0.2s
+
+        &--bold
+            font-weight 700
+
+        &--badge
+            padding-top 16px
+            position relative
+
+    &__badge
+        position absolute
+        top 4px
+        left 50%
+        transform translateX(-50%)
+        font-size 9px
+        font-weight 700
+        color #fff
+        padding 1px 5px
+        border-radius 3px
+        text-transform uppercase
+
+        &--gratis
+            background $color-primary
+
+        &--nuevo
+            background #ff006e
+
+    &__blacksale
+        display flex
+        align-items center
+        background $color-accent
+        color #fff
+        text-decoration none
+        height 45px
+        padding 0 16px
+        border-radius 6px 6px 20px 6px
+        gap 10px
+        flex-shrink 0
+        transition background 0.2s
+
+        &:hover
+            background darken($color-accent, 10%)
+
+    &__blacksale-icon
+        width 28px
+        height 28px
+        object-fit contain
+
+    &__blacksale-divider
+        width 1.5px
+        height 24px
+        background rgba(255,255,255,0.4)
+
+    &__blacksale-text
+        font-size 12px
+        font-weight 600
+        white-space nowrap

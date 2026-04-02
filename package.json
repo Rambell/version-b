@@ -3,9 +3,10 @@
     "private": true,
     "type": "module",
     "scripts": {
-        "build": "vite build",
-        "dev": "vite"
-    },
+    "dev": "mix --mix-config=webpack.mix.cjs",
+    "watch": "mix watch --mix-config=webpack.mix.cjs",
+    "build": "mix --production --mix-config=webpack.mix.cjs"
+},
     "devDependencies": {
         "@tailwindcss/vite": "^4.0.0",
         "axios": ">=1.11.0 <=1.14.0",
