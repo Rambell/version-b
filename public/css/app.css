@@ -1,0 +1,220 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: 'Poppins', sans-serif;
+  color: #2d3748;
+  background: #fff;
+}
+.topbar {
+  background: #fff;
+  border-bottom: 1px solid #f0f0f0;
+  padding: 12px 0;
+}
+.topbar__container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+.topbar__logo-img {
+  width: 180px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.topbar__search {
+  display: flex;
+  align-items: center;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  overflow: hidden;
+  width: 100%;
+  max-width: 500px;
+  background: #fff;
+  transition: border-color 0.3s ease;
+}
+.topbar__search:focus-within {
+  border-color: #a5b7d0;
+}
+.topbar__search-input {
+  flex: 1;
+  padding: 10px 15px;
+  font-size: 14px;
+  border: none;
+  outline: none;
+  color: #4a4a4a;
+  font-family: 'Poppins', sans-serif;
+  background: transparent;
+}
+.topbar__search-input::-moz-placeholder {
+  color: #a0aec0;
+}
+.topbar__search-input::placeholder {
+  color: #a0aec0;
+}
+.topbar__search-btn {
+  background: #2cb7ff;
+  border: none;
+  padding: 0 20px;
+  height: 40px;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease;
+}
+.topbar__search-btn svg {
+  width: 18px;
+  height: 18px;
+}
+.topbar__search-btn:hover {
+  background: #0eadff;
+}
+.topbar__actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.topbar__btn {
+  background: none;
+  border: none;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  color: #2d3748;
+}
+.topbar__btn:hover {
+  color: #6b46ff;
+}
+.navbar {
+  background: #fff;
+  border-bottom: 1px solid #f0f0f0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.navbar__container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 56px;
+}
+.navbar__left {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+.navbar__whatsapp {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-right: 24px;
+}
+.navbar__whatsapp-icon {
+  width: 18px;
+}
+.navbar__separator {
+  color: #ddd;
+  font-weight: 300;
+}
+.navbar__links {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 28px;
+}
+.navbar__item {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.navbar__item:hover > .navbar__link {
+  color: #2cb7ff;
+  border-bottom-color: #2cb7ff;
+}
+.navbar__link {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #2d3748;
+  text-decoration: none;
+  height: 100%;
+  border-bottom: 2px solid transparent;
+  padding-top: 4px;
+  white-space: nowrap;
+  transition: color 0.2s, border-color 0.2s;
+}
+.navbar__link--bold {
+  font-weight: 700;
+}
+.navbar__link--badge {
+  padding-top: 16px;
+  position: relative;
+}
+.navbar__badge {
+  position: absolute;
+  top: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 9px;
+  font-weight: 700;
+  color: #fff;
+  padding: 1px 5px;
+  border-radius: 3px;
+  text-transform: uppercase;
+}
+.navbar__badge--gratis {
+  background: #6b46ff;
+}
+.navbar__badge--nuevo {
+  background: #ff006e;
+}
+.navbar__blacksale {
+  display: flex;
+  align-items: center;
+  background: #2cb7ff;
+  color: #fff;
+  text-decoration: none;
+  height: 45px;
+  padding: 0 16px;
+  border-radius: 6px 6px 20px 6px;
+  gap: 10px;
+  flex-shrink: 0;
+  transition: background 0.2s;
+}
+.navbar__blacksale:hover {
+  background: #0eadff;
+}
+.navbar__blacksale-icon {
+  width: 28px;
+  height: 28px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.navbar__blacksale-divider {
+  width: 1.5px;
+  height: 24px;
+  background: rgba(255,255,255,0.4);
+}
+.navbar__blacksale-text {
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
