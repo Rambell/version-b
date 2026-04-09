@@ -128,8 +128,8 @@
         cursor pointer
         margin-bottom 6px
 
-&__nouislider
-    margin 8px 4px
+    &__nouislider
+        margin 8px 4px
 
 // Personalizar colores noUiSlider
 .noUi-connect
@@ -244,3 +244,218 @@
 
     @media (max-width: 1279px)
         display flex
+
+
+// Cart overlay
+.cart-overlay
+    display none
+    position fixed
+    inset 0
+    background rgba(0,0,0,0.4)
+    z-index 150
+
+    &--open
+        display block
+
+// Cart drawer
+.cart-drawer
+    position fixed
+    top 0
+    right 0
+    width 380px
+    max-width 100%
+    height 100%
+    background var(--color-bg)
+    z-index 200
+    display flex
+    flex-direction column
+    box-shadow -4px 0 20px rgba(0,0,0,0.15)
+    transform translateX(100%)
+    transition transform 0.3s ease
+
+    &--open
+        transform translateX(0)
+
+    &__header
+        display flex
+        align-items center
+        justify-content space-between
+        padding 20px 24px
+        border-bottom 1px solid var(--color-border)
+
+    &__title
+        display flex
+        align-items center
+        gap 8px
+        font-size 16px
+        font-weight 700
+        color var(--color-text)
+
+    &__count
+        background var(--color-primary)
+        color #fff
+        font-size 11px
+        font-weight 700
+        padding 2px 7px
+        border-radius 999px
+
+    &__close
+        background none
+        border none
+        cursor pointer
+        color var(--color-text-light)
+        padding 4px
+        transition color 0.2s
+
+        &:hover
+            color var(--color-text)
+
+    &__body
+        flex 1
+        overflow-y auto
+        padding 16px 24px
+        display flex
+        flex-direction column
+        gap 12px
+
+    &__empty
+        display flex
+        flex-direction column
+        align-items center
+        justify-content center
+        height 100%
+        gap 12px
+        color var(--color-text-light)
+        text-align center
+
+        svg
+            opacity 0.3
+
+        p
+            font-size 14px
+
+        button
+            background none
+            border none
+            color var(--color-primary)
+            font-size 13px
+            cursor pointer
+            font-family 'Poppins', sans-serif
+
+            &:hover
+                text-decoration underline
+
+    &__item
+        display flex
+        gap 12px
+        padding 12px
+        border-radius 12px
+        border 1px solid var(--color-border)
+        background var(--color-bg-soft)
+
+    &__item-img
+        width 64px
+        height 64px
+        object-fit cover
+        border-radius 8px
+        flex-shrink 0
+
+    &__item-info
+        flex 1
+        min-width 0
+
+    &__item-title
+        font-size 13px
+        font-weight 600
+        color var(--color-text)
+        line-height 1.3
+        margin-bottom 4px
+        display -webkit-box
+        -webkit-line-clamp 2
+        -webkit-box-orient vertical
+        overflow hidden
+
+    &__item-instructor
+        font-size 11px
+        color var(--color-text-light)
+        margin-bottom 6px
+
+    &__item-prices
+        display flex
+        align-items center
+        gap 6px
+
+    &__item-price
+        font-size 14px
+        font-weight 700
+        color var(--color-text)
+
+    &__item-original
+        font-size 11px
+        color var(--color-text-light)
+        text-decoration line-through
+
+    &__item-remove
+        background none
+        border none
+        cursor pointer
+        color var(--color-text-light)
+        flex-shrink 0
+        padding 4px
+        transition color 0.2s
+
+        &:hover
+            color #ef4444
+
+    &__footer
+        padding 16px 24px
+        border-top 1px solid var(--color-border)
+        display flex
+        flex-direction column
+        gap 12px
+
+    &__total
+        display flex
+        align-items center
+        justify-content space-between
+
+        span:first-child
+            font-size 13px
+            color var(--color-text-light)
+
+    &__total-amount
+        font-size 22px
+        font-weight 700
+        color var(--color-text)
+
+    &__checkout
+        width 100%
+        background var(--color-primary)
+        color #fff
+        border none
+        padding 14px
+        border-radius 12px
+        font-size 15px
+        font-weight 600
+        cursor pointer
+        font-family 'Poppins', sans-serif
+        transition background 0.2s
+
+        &:hover
+            background var(--color-primary-dark)
+
+    &__clear
+        display flex
+        align-items center
+        justify-content center
+        gap 6px
+        background none
+        border none
+        color var(--color-text-light)
+        font-size 12px
+        cursor pointer
+        font-family 'Poppins', sans-serif
+        transition color 0.2s
+
+        &:hover
+            color #ef4444
