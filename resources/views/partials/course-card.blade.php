@@ -10,46 +10,51 @@
 @endphp
 
 <div class="course-card"
+     data-id="{{ $course['id'] }}"
      data-category="{{ $course['categoria'] }}"
      data-modalidad="{{ $course['modalidad'] }}"
      data-tipo="{{ $course['tipo'] }}"
      data-tags="{{ $tagsStr }}"
      data-price="{{ $course['discountPrice'] }}"
+     data-original-price="{{ $course['originalPrice'] }}"
      data-horas="{{ $course['horas'] }}"
      data-discount="{{ $discount }}"
      data-status="{{ $course['status'] }}"
      data-popularity="{{ $course['popularity'] }}"
-     data-rating="{{ $course['rating'] }}">
+     data-rating="{{ $course['rating'] }}"
+     data-title="{{ $course['title'] }}"
+     data-instructor="{{ $course['instructor'] }}"
+     data-image="{{ $course['image'] }}">
 
-<div class="course-card__image-wrapper">
-    <img src="{{ $course['image'] }}" alt="{{ $course['title'] }}" class="course-card__image" loading="lazy">
+    <div class="course-card__image-wrapper">
+        <img src="{{ $course['image'] }}" alt="{{ $course['title'] }}" class="course-card__image" loading="lazy">
 
-    {{-- Badge modalidad + tooltip --}}
-    <div class="course-card__badge-wrapper">
-        <div class="course-card__badge-modalidad">
-            <span class="course-card__dot" style="background: {{ $dotColor }}"></span>
-            {{ $course['modalidad'] }}
-            <span class="course-card__badge-info">ℹ</span>
+   
+        <div class="course-card__badge-wrapper">
+            <div class="course-card__badge-modalidad">
+                <span class="course-card__dot" style="background: {{ $dotColor }}"></span>
+                {{ $course['modalidad'] }}
+                <span class="course-card__badge-info">ℹ</span>
+            </div>
+
+            {{-- Tooltip --}}
+            @php
+                $tooltips = [
+                    'En Vivo' => 'Sesiones en tiempo real con el instructor. Se graban para verlas después.',
+                    'Online' => 'Accede cuando quieras, a tu propio ritmo.',
+                    'Presencial' => 'Asistencia física requerida en sede.',
+                ];
+            @endphp
+            <div class="course-card__tooltip">
+                {{ $tooltips[$course['modalidad']] ?? '' }}
+                <div class="course-card__tooltip-arrow"></div>
+            </div>
         </div>
 
-        {{-- Tooltip --}}
-        @php
-            $tooltips = [
-                'En Vivo' => 'Sesiones en tiempo real con el instructor. Se graban para verlas después.',
-                'Online' => 'Accede cuando quieras, a tu propio ritmo.',
-                'Presencial' => 'Asistencia física requerida en sede.',
-            ];
-        @endphp
-        <div class="course-card__tooltip">
-            {{ $tooltips[$course['modalidad']] ?? '' }}
-            <div class="course-card__tooltip-arrow"></div>
+        <div class="course-card__rating">
+            ★ {{ $course['rating'] }}
         </div>
     </div>
-
-    <div class="course-card__rating">
-        ★ {{ $course['rating'] }}
-    </div>
-</div>
 
     <div class="course-card__body">
         <h3 class="course-card__title">{{ $course['title'] }}</h3>
@@ -83,7 +88,17 @@
                     ${{ number_format($course['originalPrice'], 0, ',', '.') }} CLP
                 </span>
             </div>
-            <button class="course-card__btn">Ver curso</button>
+           
         </div>
+          <div class="course-card__footer-buttons">
+        <button class="course-card__btn course-card__btn--outline">Ver curso</button>
+        <button class="course-card__btn course-card__btn--cart btn-add-to-cart">
+            <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
+            </svg>
+            Carrito
+        </button>
+    </div>
     </div>
 </div>

@@ -3,8 +3,10 @@
 // ==================
 .topbar
     background var(--color-bg)
-
     padding 12px 0
+    position sticky
+    top 0
+    z-index 101
 
     &__container
         max-width 1440px
@@ -92,8 +94,8 @@
     background var(--color-bg)
     border-bottom 1px solid var(--color-border)
     position sticky
-    top 0
-    z-index 100
+    top 64PX
+    z-index 130
 
     &__container
         max-width 1440px
@@ -369,3 +371,24 @@
                 border-color var(--color-primary)
                 color var(--color-primary)
 
+&__cart
+    position relative
+    cursor pointer
+    color var(--color-primary)
+    display flex
+    align-items center
+
+&__cart-count
+    position absolute
+    top -8px
+    right -8px
+    background var(--color-primary)
+    color #fff
+    font-size 10px
+    font-weight 700
+    width 16px
+    height 16px
+    border-radius 50%
+    display flex
+    align-items center
+    justify-content center
