@@ -516,5 +516,157 @@ $(document).ready(function () {
     $('#sidebar-overlay').on('click', closeSidebar);
 
 
+
+// ==================
+// CARRITO
+// ==================
+let cart = JSON.parse(localStorage.getItem('adipa-cart') || '[]');
+
+function saveCart() {
+    localStorage.setItem('adipa-cart', JSON.stringify(cart));
+}
+
+function formatPrice(price) {
+    return '$' + parseInt(price).toLocaleString('es-CL') + ' CLP';
+}
+
+function openCart() {
+    $('#cart-drawer').addClass('cart-drawer--open');
+    $('#cart-overlay').addClass('cart-overlay--open');
+    $('body').css('overflow', 'hidden');
+}
+
+function closeCart() {
+    $('#cart-drawer').removeClass('cart-drawer--open');
+    $('#cart-overlay').removeClass('cart-overlay--open');
+    $('body').css('overflow', '');
+}
+
+function renderCart() {
+    const $body = $('#cart-body');
+    const $footer = $('#cart-footer');
+    const count = cart.length;
+
+    // Actualiza contadores
+    $('#cart-drawer-count').text(count);
+    $('#cart-count').text(count);
+    if (count > 0) {
+        $('#cart-count').show();
+    } else {
+        $('#cart-count').hide();
+    }
+
+    // Renderiza items
+    $body.empty();
+
+    if (count === 0) {
+        $footer.hide();
+        $body.append(`
+            <div class="cart-drawer__empty">
+                <svg width="48" height="48" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                          d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
+                </svg>
+                <p>Tu carrito está vacío</p>
+                <button id="cart-explore">Explorar cursos</button>
+            </div>
+        `);
+    } else {
+        $footer.show();
+
+        cart.forEach(function(item) {
+            $body.append(`
+                <div class="cart-drawer__item" data-id="${item.id}">
+                    <img src="${item.image}" alt="${item.title}" class="cart-drawer__item-img">
+                    <div class="cart-drawer__item-info">
+                        <p class="cart-drawer__item-title">${item.title}</p>
+                        <p class="cart-drawer__item-instructor">${item.instructor}</p>
+                        <div class="cart-drawer__item-prices">
+                            <span class="cart-drawer__item-price">${formatPrice(item.price)}</span>
+                            <span class="cart-drawer__item-original">${formatPrice(item.originalPrice)}</span>
+                        </div>
+                    </div>
+                    <button class="cart-drawer__item-remove" data-id="${item.id}">
+                        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                        </svg>
+                    </button>
+                </div>
+            `);
+        });
+
+        // Total
+        const total = cart.reduce((acc, item) => acc + parseInt(item.price), 0);
+        $('#cart-total').text(formatPrice(total));
+    }
+
+    // Actualiza estado botones en cards
+    $('.btn-add-to-cart').each(function() {
+        const cardId = $(this).closest('.course-card').data('id');
+        const inCart = cart.some(i => i.id == cardId);
+        if (inCart) {
+            $(this).html('✓ Agregado').addClass('course-card__btn--added').prop('disabled', true);
+        } else {
+            $(this).html(`
+                <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
+                </svg>
+                Carrito
+            `).removeClass('course-card__btn--added').prop('disabled', false);
+        }
+    });
+}
+
+// Agregar al carrito
+$(document).on('click', '.btn-add-to-cart', function() {
+    const $card = $(this).closest('.course-card');
+    const id = $card.data('id');
+
+    if (cart.some(i => i.id == id)) return;
+
+    const item = {
+        id: id,
+        title: $card.data('title'),
+        instructor: $card.data('instructor'),
+        image: $card.data('image'),
+        price: $card.data('price'),
+        originalPrice: $card.data('original-price'),
+    };
+
+    cart.push(item);
+    saveCart();
+    renderCart();
+    openCart();
+});
+
+// Quitar item
+$(document).on('click', '.cart-drawer__item-remove', function() {
+    const id = $(this).data('id');
+    cart = cart.filter(i => i.id != id);
+    saveCart();
+    renderCart();
+});
+
+// Vaciar carrito
+$('#cart-clear').on('click', function() {
+    cart = [];
+    saveCart();
+    renderCart();
+});
+
+// Abrir carrito desde el header
+$('#cart-icon').on('click', function() {
+    openCart();
+});
+
+// Cerrar
+$('#cart-close, #cart-overlay').on('click', closeCart);
+$(document).on('click', '#cart-explore', closeCart);
+
+// Renderiza al cargar
+renderCart();
+
+
 });
 
